@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="100%" height="100%" fill="#0b1d3a" />
+  <g fill="#fff" font-family="Barlow, Arial, sans-serif">
+    <text x="60" y="120" font-size="36" font-weight="700">RW POS - With Table Layout</text>
+    <text x="60" y="170" font-size="20" opacity="0.85">6:48 — Demo</text>
+  </g>
+  <g transform="translate(540,260)">
+    <circle cx="0" cy="0" r="70" fill="#fff" opacity="0.9"/>
+    <polygon points="-12,-20 36,0 -12,20" fill="#0b1d3a"/>
+  </g>
+</svg>

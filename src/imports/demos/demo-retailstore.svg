@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0b1d3a"/>
+      <stop offset="1" stop-color="#fbf6e8"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0b1d3a" />
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#g)" opacity="0.08" />
+  <g fill="#fff" font-family="Barlow, Arial, sans-serif">
+    <text x="60" y="120" font-size="36" font-weight="700">Retailware POS for Retail Store</text>
+    <text x="60" y="170" font-size="20" opacity="0.85">3:01 — Demo</text>
+  </g>
+  <g transform="translate(540,260)">
+    <circle cx="0" cy="0" r="70" fill="#ffffff" opacity="0.9"/>
+    <polygon points="-12,-20 36,0 -12,20" fill="#0b1d3a"/>
+  </g>
+</svg>
