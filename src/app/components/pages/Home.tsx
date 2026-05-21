@@ -333,7 +333,6 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
           { src: "/src/imports/clients/food/tsumaru-udon.png", name: "Tsumaru Udon" },
           { src: "/src/imports/clients/food/twelve-cupcakes.png", name: "Twelve Cupcakes" },
           { src: "/src/imports/clients/food/vikings.png", name: "Vikings" },
-          { src: "/src/imports/clients/food/WhatsApp Image 2026-05-07 at 9.21.04 AM.jpeg", name: "Whatsapp Image 2026 05 07 At 9.21.04 Am" },
           { src: "/src/imports/clients/food/yabu.png", name: "Yabu" },
           { src: "/src/imports/clients/food/zig.png", name: "Zig" },
         ], true)}
