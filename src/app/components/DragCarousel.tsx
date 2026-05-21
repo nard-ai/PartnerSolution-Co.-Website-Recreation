@@ -29,14 +29,14 @@ export function DragCarousel({ children }: { children: ReactNode }) {
           dragConstraints={bounds}
           dragElastic={0.08}
           whileTap={{ cursor: "grabbing" }}
-          className="flex gap-4 px-6 md:px-10 py-4"
+          className="flex gap-4 px-[clamp(1.25rem,3vw,2.5rem)] py-4"
           style={{ width: "max-content" }}
         >
           {children}
         </motion.div>
       </div>
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 mt-4 flex items-center gap-2 rw-mono text-[12px] opacity-70">
-        <MoveHorizontal size={14} /> click & drag · or swipe
+      <div className="mx-auto max-w-[min(92vw,87.5rem)] px-[clamp(1.25rem,3vw,2.5rem)] mt-4 flex items-center gap-2 rw-mono text-[0.75rem] opacity-70">
+        <MoveHorizontal size="0.875rem" /> click & drag · or swipe
       </div>
     </div>
   );

@@ -32,19 +32,19 @@ export function Nav({ page, onNavigate }: { page: PageKey; onNavigate: (p: PageK
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="sticky top-0 z-40 w-full"
         style={{
-          backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
+          backdropFilter: scrolled ? "blur(0.875rem) saturate(140%)" : "none",
           background: scrolled ? "color-mix(in srgb, var(--rw-bg) 80%, transparent)" : "transparent",
-          borderBottom: scrolled ? "1px solid var(--rw-rule)" : "1px solid transparent",
+          borderBottom: scrolled ? "0.0625rem solid var(--rw-rule)" : "0.0625rem solid transparent",
           transition: "background .3s ease, border-color .3s ease, backdrop-filter .3s ease",
         }}
       >
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-5 md:px-10 py-4 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-[min(92vw,87.5rem)] px-[clamp(1rem,3vw,2.5rem)] py-4 flex items-center justify-between gap-4">
           <button onClick={() => onNavigate("home")} className="shrink-0 flex items-center" aria-label="RetailWare home">
             <Logo className="h-9 md:h-10 w-auto" />
           </button>
 
           {/* Pill nav — desktop */}
-          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full" style={{ border: "1px solid var(--rw-line)" }}>
+          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full" style={{ border: "0.0625rem solid var(--rw-line)" }}>
             {items.map((it) => (
               <button
                 key={it.key}
@@ -60,7 +60,7 @@ export function Nav({ page, onNavigate }: { page: PageKey; onNavigate: (p: PageK
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
-                <span className="relative rw-mono text-[12px]">{it.num} · {it.label}</span>
+                <span className="relative rw-mono text-[0.75rem]">{it.num} · {it.label}</span>
               </button>
             ))}
           </nav>
@@ -70,7 +70,7 @@ export function Nav({ page, onNavigate }: { page: PageKey; onNavigate: (p: PageK
               onClick={toggle}
               aria-label="Toggle dark mode"
               className="relative w-10 h-10 rounded-full overflow-hidden grid place-items-center"
-              style={{ border: "1px solid var(--rw-line)" }}
+              style={{ border: "0.0625rem solid var(--rw-line)" }}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -81,24 +81,24 @@ export function Nav({ page, onNavigate }: { page: PageKey; onNavigate: (p: PageK
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute inset-0 grid place-items-center"
                 >
-                  {mode === "light" ? <Moon size={16} /> : <Sun size={16} />}
+                    {mode === "light" ? <Moon size="1rem" /> : <Sun size="1rem" />}
                 </motion.span>
               </AnimatePresence>
             </button>
 
             <a className="hidden md:inline-flex rw-btn-outline !py-3 !px-4 mr-2" href="https://www.retailwarepos.com/download" target="_blank" rel="noopener">Download</a>
             <button className="hidden md:inline-flex rw-btn !py-3 !px-5" onClick={() => onNavigate("home")}>
-              30-Day Trial <ArrowUpRight size={16} />
+              30-Day Trial <ArrowUpRight size="1rem" />
             </button>
 
             {/* Hamburger only below lg — replaces the pill nav */}
             <button
               className="lg:hidden w-10 h-10 rounded-full grid place-items-center"
-              style={{ border: "1px solid var(--rw-line)" }}
+              style={{ border: "0.0625rem solid var(--rw-line)" }}
               onClick={() => setOpen(true)}
               aria-label="Open menu"
             >
-              <Menu size={18} />
+              <Menu size="1.125rem" />
             </button>
           </div>
         </div>
@@ -111,7 +111,7 @@ export function Nav({ page, onNavigate }: { page: PageKey; onNavigate: (p: PageK
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             style={{ background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}
           >
-            <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
+            <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "0.0625rem solid rgba(255,255,255,0.15)" }}>
               <Logo className="h-9 w-auto" invert />
               <button className="p-2" onClick={() => setOpen(false)} aria-label="Close menu"><X /></button>
             </div>
@@ -122,7 +122,7 @@ export function Nav({ page, onNavigate }: { page: PageKey; onNavigate: (p: PageK
                   initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 * i }}
                   onClick={() => { onNavigate(it.key); setOpen(false); }}
                   className="text-left flex items-baseline gap-4 py-4"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.12)" }}
+                  style={{ borderBottom: "0.0625rem solid rgba(255,255,255,0.12)" }}
                 >
                   <span className="rw-mono text-xs opacity-70">{it.num}</span>
                   <span className="rw-display text-3xl sm:text-5xl">{it.label}</span>

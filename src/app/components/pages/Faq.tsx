@@ -37,7 +37,7 @@ export function Faq({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-8">
             <span className="rw-tag mb-6">Manual · Frequently Asked</span>
-            <h1 className="rw-display text-[44px] sm:text-[64px] md:text-[120px] lg:text-[150px] mt-6">
+            <h1 className="rw-display text-[clamp(2.75rem,7vw,9.375rem)] mt-6">
               {["Read the", <em key="x" style={{ color: "var(--rw-amber)" }}>fine print</em>, "."].slice(0, 2).map((line, i) => (
                 <motion.span key={i} className="block"
                   initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
@@ -57,13 +57,13 @@ export function Faq({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
         <Reveal delay={0.4}>
           <div className="mt-12 grid grid-cols-12 gap-4">
             <div className="col-span-12 lg:col-span-7 relative">
-              <Search size={18} className="absolute left-5 top-1/2 -translate-y-1/2 opacity-60" />
+              <Search size="1.125rem" className="absolute left-5 top-1/2 -translate-y-1/2 opacity-60" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search the manual… e.g. 'BIR permit'"
                 className="w-full px-14 py-5 rounded-full bg-transparent rw-mono text-sm outline-none focus:bg-[var(--rw-card)]"
-                style={{ border: "1px solid var(--rw-line)", color: "var(--rw-ink)" }}
+                style={{ border: "0.0625rem solid var(--rw-line)", color: "var(--rw-ink)" }}
               />
             </div>
             <div className="col-span-12 lg:col-span-5 flex gap-2 items-center overflow-x-auto sm:flex-wrap sm:overflow-visible pb-2">
@@ -75,12 +75,12 @@ export function Faq({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
                     onClick={() => setCat(c)}
                     whileTap={{ scale: 0.95 }}
                     className="relative px-4 py-2 rounded-full shrink-0"
-                    style={{ border: "1px solid var(--rw-line)" }}
+                    style={{ border: "0.0625rem solid var(--rw-line)" }}
                   >
                     {active && (
                       <motion.span layoutId="rw-cat-pill" className="absolute inset-0 rounded-full" style={{ background: "var(--rw-amber)" }} />
                     )}
-                    <span className="relative rw-mono text-[12px]" style={{ color: active ? "var(--rw-navy)" : "var(--rw-ink)" }}>{c}</span>
+                    <span className="relative rw-mono text-[0.75rem]" style={{ color: active ? "var(--rw-navy)" : "var(--rw-ink)" }}>{c}</span>
                   </motion.button>
                 );
               })}
@@ -92,7 +92,7 @@ export function Faq({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
       <Section pad="tight">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-3 hidden lg:block">
-            <div className="sticky top-32 rw-mono text-[12px] opacity-70">
+            <div className="sticky top-32 rw-mono text-[0.75rem] opacity-70">
               <div className="mb-3">Index</div>
               {filtered.map((f) => (
                 <button key={f.i} onClick={() => setOpen(f.i)} className="block text-left py-2 rw-link">
@@ -102,11 +102,11 @@ export function Faq({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-9">
-            <div style={{ borderTop: "1px solid var(--rw-rule)" }}>
+            <div style={{ borderTop: "0.0625rem solid var(--rw-rule)" }}>
               {filtered.map((f) => {
                 const isOpen = open === f.i;
                 return (
-                  <div key={f.i} style={{ borderBottom: "1px solid var(--rw-rule)" }}>
+                  <div key={f.i} style={{ borderBottom: "0.0625rem solid var(--rw-rule)" }}>
                     <button
                       onClick={() => setOpen(isOpen ? null : f.i)}
                       className="w-full py-7 flex items-start gap-4 md:gap-6 text-left group"
@@ -145,7 +145,7 @@ export function Faq({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
       </Section>
 
       <Section>
-        <div className="rounded-[28px] p-10 md:p-14 flex flex-col items-center justify-center text-center" style={{ background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
+        <div className="rounded-[1.75rem] p-[clamp(2.5rem,6vw,3.5rem)] flex flex-col items-center justify-center text-center" style={{ background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
           <h2 className="rw-display text-3xl sm:text-4xl md:text-6xl">
             Still have questions? <em style={{ color: "var(--rw-amber)" }}>Talk to a human.</em>
           </h2>

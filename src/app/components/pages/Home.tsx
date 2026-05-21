@@ -94,7 +94,8 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
     const deltaY = event.clientY - gesture.startY;
 
     if (!gesture.axis) {
-      if (Math.abs(deltaX) < 6 && Math.abs(deltaY) < 6) return;
+      const jitter = testimonialWidth * 0.005;
+      if (Math.abs(deltaX) < jitter && Math.abs(deltaY) < jitter) return;
       gesture.axis = Math.abs(deltaX) > Math.abs(deltaY) ? "x" : "y";
     }
 
@@ -108,7 +109,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
   const endTestimonialDrag = (clientX: number) => {
     const gesture = testimonialGestureRef.current;
     const deltaX = clientX - gesture.startX;
-    const threshold = Math.max(56, testimonialWidth * 0.14);
+    const threshold = testimonialWidth * 0.14;
     const slideCount = testimonialSlides.length;
 
     let nextIndex = testimonialIndex;
@@ -145,7 +146,11 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
         {Array.from({ length: 2 }).map((_, loopIndex) => (
           <div key={loopIndex} className="flex items-center gap-8 pr-8 whitespace-nowrap">
             {logos.map((logo) => (
-              <div key={`${loopIndex}-${logo.name}`} className="group flex items-center justify-center flex-shrink-0" style={{ width: 80, height: 48 }}>
+              <div
+                key={`${loopIndex}-${logo.name}`}
+                className="group flex items-center justify-center flex-shrink-0"
+                style={{ width: "clamp(3.5rem, 6vw, 5rem)", height: "clamp(2rem, 4vw, 3rem)" }}
+              >
                 <img
                   src={resolveAsset(logo.src)}
                   alt={logo.name}
@@ -175,7 +180,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
               <span className="rw-tag" style={{ background: "var(--rw-amber)", borderColor: "var(--rw-amber)", color: "var(--rw-navy)" }}>BIR Accredited</span>
             </motion.div>
 
-            <h1 className="rw-display text-[44px] sm:text-[72px] md:text-[110px] lg:text-[160px]" style={{ lineHeight: 0.95 }}>
+            <h1 className="rw-display text-[clamp(2.75rem,8vw,10rem)]" style={{ lineHeight: 0.95 }}>
               {[
                 { node: <>Sell. <em className="rw-it" style={{ color: "var(--rw-amber)" }}>Cook.</em></> },
                 { node: <>Stock.</> },
@@ -210,7 +215,11 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             <div className="flex items-center gap-3 mt-2">
               <div className="flex -space-x-2">
                 {["var(--rw-amber)","var(--rw-lime)","var(--rw-navy)"].map((c, i) => (
-                  <div key={i} className="w-9 h-9 rounded-full" style={{ background: c, border: "2px solid var(--rw-bg)" }} />
+                  <div
+                    key={i}
+                    className="w-[clamp(2rem,4vw,2.25rem)] h-[clamp(2rem,4vw,2.25rem)] rounded-full"
+                    style={{ background: c, border: "0.125rem solid var(--rw-bg)" }}
+                  />
                 ))}
               </div>
               <div className="rw-mono text-xs">
@@ -223,11 +232,11 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
         {/* hero collage */}
         <Reveal delay={0.5}>
           <div className="mt-14 relative">
-            <div className="absolute -top-3 left-6 rw-mono text-[12px]" style={{ color: "var(--rw-ink-soft)" }}>
+            <div className="absolute -top-3 left-6 rw-mono text-[0.75rem]" style={{ color: "var(--rw-ink-soft)" }}>
               FIG.01 — Front-of-house in motion
             </div>
             <div className="grid grid-cols-12 gap-4">
-              <motion.div whileHover={{ scale: 1.01 }} className="col-span-12 md:col-span-8 relative overflow-hidden rounded-[28px]" style={{ border: "1px solid var(--rw-rule)", aspectRatio: "16/10" }}>
+              <motion.div whileHover={{ scale: 1.01 }} className="col-span-12 md:col-span-8 relative overflow-hidden rounded-[1.75rem]" style={{ border: "0.0625rem solid var(--rw-rule)", aspectRatio: "16/10" }}>
                 <ImageWithFallback src={resolveAsset("/src/imports/fish-and-chips-interior.jpg")} alt="Cafe POS" className="w-full h-full object-cover" />
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                   <div className="rw-display text-2xl" style={{ color: "#FBF6E8" }}>Gordon Ramsay Fish & Chips</div>
@@ -235,13 +244,13 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
                 </div>
               </motion.div>
               <div className="col-span-12 md:col-span-4 flex flex-col gap-4">
-                <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-[28px] flex-1 p-6 flex flex-col justify-between" style={{ border: "1px solid var(--rw-rule)", background: "var(--rw-amber)", color: "var(--rw-navy)" }}>
-                  <div className="rw-mono text-[12px]">Avg. setup</div>
+                <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-[1.75rem] flex-1 p-6 flex flex-col justify-between" style={{ border: "0.0625rem solid var(--rw-rule)", background: "var(--rw-amber)", color: "var(--rw-navy)" }}>
+                  <div className="rw-mono text-[0.75rem]">Avg. setup</div>
                   <div className="rw-display text-7xl"><CountUp to={48} /><span className="text-3xl">hrs</span></div>
                   <div className="text-sm">From signup to first receipt printed.</div>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-[28px] flex-1 p-6 flex flex-col justify-between" style={{ border: "1px solid var(--rw-rule)", background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
-                  <div className="rw-mono text-[12px]">Lower queues</div>
+                <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-[1.75rem] flex-1 p-6 flex flex-col justify-between" style={{ border: "0.0625rem solid var(--rw-rule)", background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
+                  <div className="rw-mono text-[0.75rem]">Lower queues</div>
                   <div className="rw-display text-7xl">−<CountUp to={42} /><span className="text-3xl">%</span></div>
                   <div className="text-sm">After installing on tablet PoS.</div>
                 </motion.div>
@@ -250,14 +259,14 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
           </div>
         </Reveal>
 
-        <div className="mt-10 flex items-center gap-3 rw-mono text-[12px] opacity-70">
-          <ArrowDown size={14} /> scroll for the field guide
+        <div className="mt-10 flex items-center gap-3 rw-mono text-[0.75rem] opacity-70">
+          <ArrowDown size="0.875rem" /> scroll for the field guide
         </div>
       </Section>
 
       {/* Trust marquee — Food */}
-      <div className="overflow-hidden py-4" style={{ borderTop: "1px solid var(--rw-rule)" }}>
-        <div className="rw-mono text-[11px] opacity-50 px-6 mb-3 tracking-widest">FOOD CLIENTS</div>
+      <div className="overflow-hidden py-4" style={{ borderTop: "0.0625rem solid var(--rw-rule)" }}>
+        <div className="rw-mono text-[0.6875rem] opacity-50 px-6 mb-3 tracking-widest">FOOD CLIENTS</div>
         {renderClientMarquee([
           { src: "/src/imports/clients/food/a-mano.png", name: "A Mano" },
           { src: "/src/imports/clients/food/a1-premium-shabu-shabu.webp", name: "A1 Premium Shabu Shabu" },
@@ -331,8 +340,8 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
       </div>
 
       {/* Trust marquee — Retail */}
-      <div className="overflow-hidden py-4" style={{ borderBottom: "1px solid var(--rw-rule)" }}>
-        <div className="rw-mono text-[11px] opacity-50 px-6 mb-3 tracking-widest">RETAIL CLIENTS</div>
+      <div className="overflow-hidden py-4" style={{ borderBottom: "0.0625rem solid var(--rw-rule)" }}>
+        <div className="rw-mono text-[0.6875rem] opacity-50 px-6 mb-3 tracking-widest">RETAIL CLIENTS</div>
         {renderClientMarquee([
           { src: "/src/imports/clients/retail/abi-drug.jfif", name: "Abi Drug" },
           { src: "/src/imports/clients/retail/afpces.jfif", name: "Afpces" },
@@ -408,12 +417,12 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             <Reveal
               key={f.num}
               delay={i * 0.06}
-              className={`col-span-12 md:col-span-6 ${f.span} relative rounded-[28px] p-7 flex flex-col justify-between min-h-[260px]`}
-              style={{ background: f.bg, border: "1px solid var(--rw-rule)", color: f.inverse ? "var(--rw-on-navy)" : (f as any).onAmber ? "#0B1D3A" : "var(--rw-on-card)" }}
+              className={`col-span-12 md:col-span-6 ${f.span} relative rounded-[1.75rem] p-7 flex flex-col justify-between min-h-[clamp(14rem,30vh,16.25rem)]`}
+              style={{ background: f.bg, border: "0.0625rem solid var(--rw-rule)", color: f.inverse ? "var(--rw-on-navy)" : (f as any).onAmber ? "#0B1D3A" : "var(--rw-on-card)" }}
             >
               <div className="flex items-start justify-between">
-                <span className="rw-mono text-[12px] opacity-80">{f.num}</span>
-                <f.icon size={28} strokeWidth={1.5} />
+                <span className="rw-mono text-[0.75rem] opacity-80">{f.num}</span>
+                <f.icon size="1.75rem" strokeWidth={1.5} />
               </div>
               <div>
                 <h3 className="rw-display text-4xl md:text-5xl mb-3">{f.title}</h3>
@@ -443,20 +452,20 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
               onClick={() => setActiveVideoId(v.id)}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="group rounded-[18px] overflow-hidden cursor-pointer text-left"
-              style={{ border: '1px solid var(--rw-rule)' }}
+              className="group rounded-[1.125rem] overflow-hidden cursor-pointer text-left"
+              style={{ border: "0.0625rem solid var(--rw-rule)" }}
               aria-label={v.title}
             >
               <div
-                className="relative flex min-h-[260px] flex-col items-center justify-center gap-6 px-6 text-center transition duration-300 group-hover:brightness-110"
+                className="relative flex min-h-[clamp(14rem,30vh,16.25rem)] flex-col items-center justify-center gap-6 px-6 text-center transition duration-300 group-hover:brightness-110"
                 style={{ background: 'var(--rw-navy)', color: 'var(--rw-on-navy)' }}
               >
-                <div className="grid h-20 w-20 place-items-center rounded-full border border-white/20 bg-white/10 text-3xl shadow-[0_12px_30px_rgba(0,0,0,0.22)] transition duration-300 group-hover:scale-110 group-hover:shadow-[0_0_28px_rgba(251,246,232,0.24),0_12px_30px_rgba(0,0,0,0.22)]">
+                <div className="grid h-[clamp(4.25rem,9vw,5rem)] w-[clamp(4.25rem,9vw,5rem)] place-items-center rounded-full border border-white/20 bg-white/10 text-3xl shadow-[0_0.75rem_1.875rem_rgba(0,0,0,0.22)] transition duration-300 group-hover:scale-110 group-hover:shadow-[0_0_1.75rem_rgba(251,246,232,0.24),0_0.75rem_1.875rem_rgba(0,0,0,0.22)]">
                   ▶
                 </div>
                 <div>
                   <div className="rw-display text-2xl md:text-3xl leading-tight">{v.title}</div>
-                  <div className="mt-3 rw-mono text-[11px] tracking-[0.35em] uppercase opacity-75">{v.label}</div>
+                  <div className="mt-3 rw-mono text-[0.6875rem] tracking-[0.35em] uppercase opacity-75">{v.label}</div>
                 </div>
               </div>
             </motion.button>
@@ -473,16 +482,16 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
           transition={{ duration: 0.2, ease: "easeOut" }}
           onClick={() => setActiveVideoId(null)}
         >
-          <div className="relative w-[90vw] max-w-[960px]" onClick={(event) => event.stopPropagation()}>
+          <div className="relative w-[min(92vw,60rem)]" onClick={(event) => event.stopPropagation()}>
             <button
               type="button"
               onClick={() => setActiveVideoId(null)}
               aria-label="Close video"
-              className="absolute -top-3 -right-3 z-10 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl leading-none text-black shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition duration-200 hover:scale-105 hover:bg-white/95"
+              className="absolute -top-3 -right-3 z-10 grid h-[clamp(2.25rem,5vw,2.75rem)] w-[clamp(2.25rem,5vw,2.75rem)] place-items-center rounded-full bg-white text-2xl leading-none text-black shadow-[0_0.625rem_1.875rem_rgba(0,0,0,0.35)] transition duration-200 hover:scale-105 hover:bg-white/95"
             >
               ✕
             </button>
-            <div className="overflow-hidden rounded-[18px] bg-black shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
+            <div className="overflow-hidden rounded-[1.125rem] bg-black shadow-[0_1.875rem_5rem_rgba(0,0,0,0.5)]">
               <div style={{ aspectRatio: "16 / 9" }}>
                 <iframe
                   key={activeVideoId}
@@ -501,7 +510,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
 
       {/* TESTIMONIAL */}
       <Section bg="var(--rw-amber)" color="var(--rw-navy)" pad="tight">
-        <div className="mb-2 rw-mono text-[12px] tracking-[0.35em] uppercase flex items-center gap-2 opacity-80">
+        <div className="mb-2 rw-mono text-[0.75rem] tracking-[0.35em] uppercase flex items-center gap-2 opacity-80">
           <span>←</span>
           <span>Click & drag · or swipe</span>
         </div>
@@ -528,13 +537,13 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
               <div
                 key={i}
                 className="shrink-0 relative overflow-visible"
-                style={{ width: `${testimonialWidth || 1000}px`, minHeight: "320px" }}
+                style={{ width: `${testimonialWidth || window.innerWidth}px`, minHeight: "clamp(15rem,35vh,20rem)" }}
               >
                 <div className="h-full w-full px-6 md:px-10 py-8 md:py-12 flex items-center overflow-visible">
-                  <div className="mx-auto max-w-[1400px] h-full grid grid-cols-12 gap-6 items-center">
+                  <div className="mx-auto max-w-[min(92vw,87.5rem)] h-full grid grid-cols-12 gap-6 items-center">
                     <div className="col-span-12 lg:col-span-2 flex lg:flex-col gap-1 self-start pt-1 md:pt-2">
                       {Array.from({ length: 5 }).map((_, starIndex) => (
-                        <Star key={starIndex} fill="currentColor" stroke="none" size={28} />
+                        <Star key={starIndex} fill="currentColor" stroke="none" size="1.75rem" />
                       ))}
                     </div>
 
@@ -549,7 +558,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
                     </div>
 
                     <div className="col-span-12 lg:col-span-3 flex justify-end lg:pr-10 xl:pr-16 overflow-visible">
-                      <div className="rw-spin w-32 h-32 rounded-full grid place-items-center" style={{ border: "1px solid var(--rw-navy)" }}>
+                      <div className="rw-spin w-[clamp(5.5rem,12vw,8rem)] h-[clamp(5.5rem,12vw,8rem)] rounded-full grid place-items-center" style={{ border: "0.0625rem solid var(--rw-navy)" }}>
                         <svg viewBox="0 0 100 100" className="w-full h-full">
                           <defs>
                             <path id={`circ-${i}`} d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
@@ -560,7 +569,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
                         </svg>
                       </div>
                     </div>
-                    <div className="col-span-12 flex justify-end pt-2 pr-1 lg:pr-2 rw-mono text-[11px] tracking-[0.35em] uppercase opacity-70" style={{ fontVariantCaps: "all-small-caps" }}>
+                    <div className="col-span-12 flex justify-end pt-2 pr-1 lg:pr-2 rw-mono text-[0.6875rem] tracking-[0.35em] uppercase opacity-70" style={{ fontVariantCaps: "all-small-caps" }}>
                       {String(i + 1).padStart(2, "0")} / {String(testimonialSlides.length).padStart(2, "0")}
                     </div>
                   </div>
@@ -592,7 +601,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
               { t: "04", h: "Pinoy Support", d: "Real humans in Manila answering Viber by 7AM. Tagalog, Bisaya, English — whatever flows." },
             ].map((c, i) => (
               <Reveal key={c.t} delay={i * 0.07} className="p-8 h-full" style={{ background: "var(--rw-navy)" }}>
-                <div className="rw-mono text-[12px] opacity-70 mb-6">{c.t}</div>
+                <div className="rw-mono text-[0.75rem] opacity-70 mb-6">{c.t}</div>
                 <h3 className="rw-display text-3xl mb-3">{c.h}</h3>
                 <p className="text-sm opacity-90">{c.d}</p>
               </Reveal>
@@ -623,8 +632,8 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
         ].map((g, i) => (
           <div
             key={i}
-            className="relative rounded-[24px] overflow-hidden group select-none"
-            style={{ width: "min(78vw, 460px)", aspectRatio: "4/5", border: "1px solid var(--rw-rule)" }}
+            className="relative rounded-[1.5rem] overflow-hidden group select-none"
+            style={{ width: "min(78vw, 28.75rem)", aspectRatio: "4/5", border: "0.0625rem solid var(--rw-rule)" }}
           >
             <ImageWithFallback
               src={resolveAsset(g.src)}
@@ -635,10 +644,10 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             />
             <div className="absolute inset-0 flex flex-col justify-end p-5" style={{ background: "linear-gradient(to top, rgba(11,29,58,0.85), transparent 50%)", color: "#FBF6E8" }}>
               <div className="inline-flex w-fit rounded-full bg-black/20 px-3 py-1 backdrop-blur-sm">
-                <div className="rw-mono text-[13px] md:text-[14px] leading-none opacity-95">{g.k}</div>
+                <div className="rw-mono text-[0.8125rem] md:text-[0.875rem] leading-none opacity-95">{g.k}</div>
               </div>
               <div className="mt-3 inline-flex w-fit rounded-full bg-black/20 px-4 py-2 backdrop-blur-sm">
-                <div className="rw-display text-[15px] md:text-[18px] leading-tight">{g.t}</div>
+                <div className="rw-display text-[0.9375rem] md:text-[1.125rem] leading-tight">{g.t}</div>
               </div>
             </div>
           </div>
@@ -647,7 +656,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
 
       {/* FINAL CTA */}
 <Section>
-  <div className="relative rounded-[36px] p-10 md:p-16 overflow-hidden" style={{ background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
+  <div className="relative rounded-[2.25rem] p-[clamp(2.5rem,6vw,4rem)] overflow-hidden" style={{ background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
     <div className="absolute inset-0 rw-noise" />
     <div className="relative flex flex-col items-center text-center">
       <span className="rw-tag" style={{ borderColor: "var(--rw-on-navy)", color: "var(--rw-on-navy)" }}>06 · Begin</span>

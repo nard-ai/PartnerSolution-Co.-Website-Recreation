@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 export function Footer({ onNavigate: _ }: { onNavigate: (p: PageKey) => void }) {
   return (
     <footer className="relative" style={{ background: "var(--rw-navy)", color: "var(--rw-on-navy)" }}>
-      <div className="overflow-hidden py-6" style={{ background: "var(--rw-amber)", color: "var(--rw-navy)", borderTop: "1px solid var(--rw-navy)", borderBottom: "1px solid var(--rw-navy)" }}>
+      <div className="overflow-hidden py-6" style={{ background: "var(--rw-amber)", color: "var(--rw-navy)", borderTop: "0.0625rem solid var(--rw-navy)", borderBottom: "0.0625rem solid var(--rw-navy)" }}>
         <div className="rw-marquee">
           <div className="rw-marquee-track rw-display text-3xl sm:text-5xl md:text-7xl">
           {Array.from({ length: 2 }).map((_, i) => (
@@ -19,7 +19,7 @@ export function Footer({ onNavigate: _ }: { onNavigate: (p: PageKey) => void }) 
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 grid grid-cols-12 gap-8">
+      <div className="mx-auto max-w-[min(92vw,87.5rem)] px-[clamp(1.25rem,3vw,2.5rem)] py-16 grid grid-cols-12 gap-8">
         <div className="col-span-12 lg:col-span-5">
           <Logo className="h-12 w-auto mb-6" invert />
           <p className="rw-display text-3xl md:text-4xl max-w-md" style={{ lineHeight: 1.05 }}>
@@ -38,7 +38,7 @@ export function Footer({ onNavigate: _ }: { onNavigate: (p: PageKey) => void }) 
         <FooterCol title="Company" items={["About", "Careers", "Press Kit", "Contact", "Download", "Support", "Partners"]} />
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-6 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between rw-mono text-[12px] opacity-80" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
+      <div className="mx-auto max-w-[min(92vw,87.5rem)] px-[clamp(1.25rem,3vw,2.5rem)] py-6 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between rw-mono text-[0.75rem] opacity-80" style={{ borderTop: "0.0625rem solid rgba(255,255,255,0.15)" }}>
         <div>©2008 by Retailware System.. Powered by PartnerSolutions, Co.</div>
         <div className="flex flex-wrap gap-4">
           <a className="rw-link" href="#">Privacy</a>
@@ -54,7 +54,7 @@ export function Footer({ onNavigate: _ }: { onNavigate: (p: PageKey) => void }) 
 function FooterCol({ title, items }: { title: string; items: string[] }) {
   return (
     <div className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2">
-      <div className="rw-mono text-[12px] mb-4 opacity-70">{title}</div>
+      <div className="rw-mono text-[0.75rem] mb-4 opacity-70">{title}</div>
       <ul className="space-y-3">
         {items.map((i) => {
           const href = i === "Download"

@@ -15,7 +15,7 @@ export function ForRetail({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
               <span className="rw-tag">Retail Edition</span>
               <span className="rw-tag" style={{ background: "var(--rw-amber)", borderColor: "var(--rw-amber)", color: "var(--rw-navy)" }}>Boutique · Hardware · Pharmacy · Mini-Mart</span>
             </div>
-            <h1 className="rw-display text-[44px] sm:text-[64px] md:text-[120px] lg:text-[140px]">
+            <h1 className="rw-display text-[clamp(2.75rem,7vw,8.75rem)]">
               {["For shelves", <>that need <em key="x" style={{ color: "var(--rw-amber)" }}>memory</em>.</>].map((line, i) => (
                 <motion.span
                   key={i}
@@ -32,7 +32,7 @@ export function ForRetail({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
             <p className="text-lg" style={{ color: "var(--rw-ink-soft)" }}>
               Barcode-fast checkout, batch & expiry tracking, supplier-aware reorder points, and loyalty all in one calmly opinionated stack.
             </p>
-            <div className="rounded-[28px] overflow-hidden aspect-[5/4]" style={{ border: "1px solid var(--rw-rule)" }}>
+            <div className="rounded-[1.75rem] overflow-hidden aspect-[5/4]" style={{ border: "0.0625rem solid var(--rw-rule)" }}>
               <ImageWithFallback src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1200&q=80" alt="retail" className="w-full h-full object-cover" />
             </div>
           </Reveal>
@@ -89,7 +89,7 @@ export function ForRetail({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
       />
 
       <Section>
-        <div className="rounded-[36px] p-10 md:p-14 text-center" style={{ background: "var(--rw-amber)", color: "var(--rw-navy)" }}>
+        <div className="rounded-[2.25rem] p-[clamp(2.5rem,6vw,3.5rem)] text-center" style={{ background: "var(--rw-amber)", color: "var(--rw-navy)" }}>
           <h2 className="rw-display text-5xl md:text-8xl">
             Stocked. Synced. <em>Sold.</em>
           </h2>
@@ -110,7 +110,7 @@ function ModuleBlock({
     <Section bg={bg} color={color}>
       <div className="grid grid-cols-12 gap-6 mb-10">
         <Reveal className="col-span-12 lg:col-span-4">
-          <div className="rw-mono text-[12px] opacity-80 mb-4">{num} · {kicker}</div>
+          <div className="rw-mono text-[0.75rem] opacity-80 mb-4">{num} · {kicker}</div>
           <h2 className="rw-display text-5xl md:text-7xl">{title}</h2>
         </Reveal>
         <Reveal delay={0.1} className="col-span-12 lg:col-span-5 lg:col-start-7 self-end">
@@ -122,10 +122,10 @@ function ModuleBlock({
           <Reveal
             key={idx}
             delay={idx * 0.05}
-            className="col-span-12 sm:col-span-6 lg:col-span-4 p-7 min-h-[220px] flex flex-col justify-between h-full"
+            className="col-span-12 sm:col-span-6 lg:col-span-4 p-[clamp(1.5rem,3vw,1.75rem)] min-h-[13.75rem] flex flex-col justify-between h-full"
             style={{ background: bg, color: color || (bg === "var(--rw-amber)" ? "#0B1D3A" : "var(--rw-on-card)") }}
           >
-            <f.i size={28} strokeWidth={1.5} />
+            <f.i size="1.75rem" strokeWidth={1.5} />
             <div>
               <h3 className="rw-display text-2xl mb-2">{f.t}</h3>
               <p className="text-sm opacity-80">{f.d}</p>
