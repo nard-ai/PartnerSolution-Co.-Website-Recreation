@@ -15,7 +15,7 @@ export function ForFood({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
               <span className="rw-tag">Food Edition</span>
               <span className="rw-tag" style={{ background: "var(--rw-amber)", borderColor: "var(--rw-amber)", color: "var(--rw-navy)" }}>Restaurants · Cafés · QSR · Fine Dining</span>
             </div>
-            <h1 className="rw-display text-[44px] sm:text-[64px] md:text-[120px] lg:text-[140px]">
+            <h1 className="rw-display text-[clamp(2.75rem,7vw,8.75rem)]">
               {["For the", <em key="x" style={{ color: "var(--rw-amber)" }}>kitchen</em>, "that never", "sleeps."].map((line, i) => (
                 <motion.span
                   key={i}
@@ -32,7 +32,7 @@ export function ForFood({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             <p className="text-lg" style={{ color: "var(--rw-ink-soft)" }}>
               From a single ramen counter to a 30-branch chicken empire — RetailWare handles modifiers, recipes, table maps, KDS routing, and split bills without breaking a sweat.
             </p>
-            <div className="rounded-[28px] overflow-hidden aspect-[5/4]" style={{ border: "1px solid var(--rw-rule)" }}>
+            <div className="rounded-[1.75rem] overflow-hidden aspect-[5/4]" style={{ border: "0.0625rem solid var(--rw-rule)" }}>
               <ImageWithFallback src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80" alt="kitchen" className="w-full h-full object-cover" />
             </div>
           </Reveal>
@@ -89,7 +89,7 @@ export function ForFood({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
       />
 
       <Section>
-        <div className="rounded-[36px] p-10 md:p-14 grid grid-cols-12 gap-6 items-center" style={{ background: "var(--rw-amber)", color: "var(--rw-navy)" }}>
+        <div className="rounded-[2.25rem] p-[clamp(2.5rem,6vw,3.5rem)] grid grid-cols-12 gap-6 items-center" style={{ background: "var(--rw-amber)", color: "var(--rw-navy)" }}>
           <div className="col-span-12 flex flex-col items-center text-center gap-4 py-2 md:py-4">
             <h2 className="rw-display w-full max-w-none text-[clamp(3.5rem,7vw,7.75rem)] leading-[0.92] tracking-[-0.05em]">
               Hungry to switch? <em>Let's plate it up.</em>
@@ -115,7 +115,7 @@ function ModuleBlock({
     <Section bg={bg} color={color}>
       <div className="grid grid-cols-12 gap-6 mb-10">
         <Reveal className="col-span-12 lg:col-span-4">
-          <div className="rw-mono text-[12px] opacity-80 mb-4">{num} · {kicker}</div>
+          <div className="rw-mono text-[0.75rem] opacity-80 mb-4">{num} · {kicker}</div>
           <h2 className="rw-display text-5xl md:text-7xl">{title}</h2>
         </Reveal>
         <Reveal delay={0.1} className="col-span-12 lg:col-span-5 lg:col-start-7 self-end">
@@ -127,10 +127,10 @@ function ModuleBlock({
           <Reveal
             key={idx}
             delay={idx * 0.05}
-            className="col-span-12 sm:col-span-6 lg:col-span-4 p-7 min-h-[220px] flex flex-col justify-between h-full"
+            className="col-span-12 sm:col-span-6 lg:col-span-4 p-[clamp(1.5rem,3vw,1.75rem)] min-h-[13.75rem] flex flex-col justify-between h-full"
             style={{ background: bg, color: color || (bg === "var(--rw-amber)" ? "#0B1D3A" : "var(--rw-on-card)") }}
           >
-            <f.i size={28} strokeWidth={1.5} />
+            <f.i size="1.75rem" strokeWidth={1.5} />
             <div>
               <h3 className="rw-display text-2xl mb-2">{f.t}</h3>
               <p className="text-sm opacity-80">{f.d}</p>

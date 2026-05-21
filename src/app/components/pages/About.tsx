@@ -11,7 +11,7 @@ export function About({ onNavigate: _ }: { onNavigate: (p: PageKey) => void }) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-8">
             <span className="rw-tag mb-6">Colophon · Who we are</span>
-            <h1 className="rw-display text-[44px] sm:text-[64px] md:text-[120px] lg:text-[150px] mt-6">
+            <h1 className="rw-display text-[clamp(2.75rem,7vw,9.375rem)] mt-6">
               {["We build POS", <>for the <em key="x" style={{ color: "var(--rw-amber)" }}>Pinoy</em></>, "hustle."].map((line, i) => (
                 <motion.span key={i} className="block"
                   initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ We've been serving Filipino businesses since 2008.
               ["03", "Human support", "Real Pinoys answering Viber by 7AM. Tagalog, Bisaya, English — whatever flows."],
               ["04", "Long memory", "We support old hardware longer than anyone. Your 2018 tablet still gets updates."],
             ].map(([n, t, d], i) => (
-              <Reveal key={n} delay={i * 0.08} className="grid grid-cols-12 gap-4 py-6" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
+              <Reveal key={n} delay={i * 0.08} className="grid grid-cols-12 gap-4 py-6" style={{ borderTop: "0.0625rem solid rgba(255,255,255,0.15)" }}>
                 <div className="col-span-2 rw-mono text-sm opacity-70">{n}</div>
                 <div className="col-span-10">
                   <h3 className="rw-display text-3xl md:text-4xl mb-2">{t}</h3>
@@ -98,8 +98,8 @@ We've been serving Filipino businesses since 2008.
           <motion.div
             key={i}
             whileHover={{ scale: 1.02 }}
-            className="rounded-[24px] overflow-hidden"
-            style={{ width: "min(70vw, 420px)", aspectRatio: "4/5", border: "1px solid var(--rw-rule)" }}
+            className="rounded-[1.5rem] overflow-hidden"
+            style={{ width: "min(70vw, 26.25rem)", aspectRatio: "4/5", border: "0.0625rem solid var(--rw-rule)" }}
           >
             <ImageWithFallback src={src} alt="team" className="w-full h-full object-cover" />
           </motion.div>
@@ -131,7 +131,7 @@ function Stat({ n, suffix = "", label }: { n: number; suffix?: string; label: st
   return (
     <div>
       <div className="rw-display text-4xl sm:text-5xl md:text-6xl"><CountUp to={n} suffix={suffix} /></div>
-      <div className="rw-mono text-[12px] opacity-70 mt-2">{label}</div>
+      <div className="rw-mono text-[0.75rem] opacity-70 mt-2">{label}</div>
     </div>
   );
 }

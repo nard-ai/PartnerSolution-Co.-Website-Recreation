@@ -17,7 +17,7 @@ export function Section({
   const py = pad === "hero" ? "pt-10 pb-20 md:pt-16 md:pb-28" : pad === "tight" ? "py-12" : "py-20 md:py-28";
   return (
     <section className={`relative ${py}`} style={style}>
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">{children}</div>
+      <div className="mx-auto max-w-[min(92vw,87.5rem)] px-[clamp(1.25rem,3vw,2.5rem)]">{children}</div>
     </section>
   );
 }
