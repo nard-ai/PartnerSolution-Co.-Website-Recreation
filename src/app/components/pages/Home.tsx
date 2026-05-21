@@ -7,6 +7,9 @@ import { Section } from "../Section";
 import { Reveal, CountUp } from "../Reveal";
 import { DragCarousel } from "../DragCarousel";
 
+const localAssets = import.meta.glob("/src/imports/**/*", { eager: true, import: "default" }) as Record<string, string>;
+const resolveAsset = (src: string) => localAssets[src] ?? src;
+
 export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
   const testimonialViewportRef = useRef<HTMLDivElement>(null);
   const testimonialGestureRef = useRef({ pointerId: -1, startX: 0, startY: 0, axis: null as null | "x" | "y" });
@@ -144,7 +147,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             {logos.map((logo) => (
               <div key={`${loopIndex}-${logo.name}`} className="group flex items-center justify-center flex-shrink-0" style={{ width: 80, height: 48 }}>
                 <img
-                  src={logo.src}
+                  src={resolveAsset(logo.src)}
                   alt={logo.name}
                   draggable={false}
                   className="max-h-full max-w-full object-contain select-none transition duration-300 group-hover:opacity-100"
@@ -225,7 +228,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             </div>
             <div className="grid grid-cols-12 gap-4">
               <motion.div whileHover={{ scale: 1.01 }} className="col-span-12 md:col-span-8 relative overflow-hidden rounded-[28px]" style={{ border: "1px solid var(--rw-rule)", aspectRatio: "16/10" }}>
-                <ImageWithFallback src="/src/imports/fish-and-chips-interior.jpg" alt="Cafe POS" className="w-full h-full object-cover" />
+                <ImageWithFallback src={resolveAsset("/src/imports/fish-and-chips-interior.jpg")} alt="Cafe POS" className="w-full h-full object-cover" />
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                   <div className="rw-display text-2xl" style={{ color: "#FBF6E8" }}>Gordon Ramsay Fish & Chips</div>
                   <span className="rw-tag" style={{ background: "#FBF6E8", borderColor: "#FBF6E8", color: "var(--rw-navy)" }}>LIVE</span>
@@ -624,7 +627,7 @@ export function Home({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
             style={{ width: "min(78vw, 460px)", aspectRatio: "4/5", border: "1px solid var(--rw-rule)" }}
           >
             <ImageWithFallback
-              src={g.src}
+              src={resolveAsset(g.src)}
               alt={g.t}
               className="w-full h-full object-cover pointer-events-none transition duration-500 group-hover:scale-[1.03]"
               style={{ filter: "brightness(1.08) contrast(1.02)" }}
